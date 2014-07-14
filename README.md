@@ -13,7 +13,9 @@
 
 - 创建一个横屏的Coco2d-x项目，命名为PompaDroid
 - 拼出游戏主界面效果图如下
+
 ![task1](src/task1.png)
+
 - 分辨率适配，适配所有移动设备分辨率（较难）
 - 使用Tile Map绘制游戏地图
 
