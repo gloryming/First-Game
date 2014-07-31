@@ -1,5 +1,6 @@
 #include "OperationLayer.h"
-
+#include "GameLayer.h"
+#include "GameScene.h"
 
 OperationLayer::OperationLayer()
 {

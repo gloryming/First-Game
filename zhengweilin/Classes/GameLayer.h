@@ -20,7 +20,7 @@ private:
 	cocos2d::TMXTiledMap* _map;
 
 	ActionSprite *_hero;
-	cocos2d::Array *robots;
+	cocos2d::Array *_robots;
 	cocos2d::SpriteBatchNode *_actors;
 };
 

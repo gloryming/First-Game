@@ -1,5 +1,5 @@
 #include "ActionSprite.h"
-
+#include "GameScene.h"
 
 ActionSprite::ActionSprite()
 {
@@ -35,7 +35,7 @@ void ActionSprite::walk(Point direction){
 		runAction(_walkAction);
 		_direction = direction;
 		//根据精灵的x向量，来判断精灵的正面“朝向”
-		_direction.x > 0 ? setFlipX(true) : setFlipX(false);
+		_direction.x > 0 ? setFlipX(false) : setFlipX(true);
 	}
 }
 
@@ -80,18 +80,15 @@ change_state_failed:
 
 
 Animation* ActionSprite::createAnimation(const char*fmt, int count, float fps){
-	//Array* frames = Array::createWithCapacity(count);
-	
-	Vector<cocos2d::SpriteFrame *> frames;
 
-	int i = 0;
+	Vector<SpriteFrame*> frames(count);
 
 	for (int i = 0; i < count; i++){
 		const char *png = String::createWithFormat(fmt, i)->getCString();
 		SpriteFrame *frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(png);
 		frames.pushBack(frame);
 	}
-	return Animation::createWithSpriteFrames(frames, 1 / fps);
+	return Animation::createWithSpriteFrames(frames, 1.0f / fps);
 }
 
 

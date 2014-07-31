@@ -34,8 +34,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
    glView->setDesignResolutionSize(480.0f, 320.0f, ResolutionPolicy::FIXED_HEIGHT);
 
    std::vector<std::string> searchPath;
+   searchPath.push_back("Hero");
    searchPath.push_back("Sprites");
    CCFileUtils::getInstance()->setSearchPaths(searchPath);
+
+   srand(time(NULL));
 
     // turn on display FPS
 	director->setDisplayStats(true);

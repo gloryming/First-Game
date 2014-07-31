@@ -11,6 +11,7 @@ public:
 	~Hero();
 
 	bool init();
+	//create就是新建一个Hero然后初始化，然后返回这个Hero
 	CREATE_FUNC(Hero);
 	
 };
