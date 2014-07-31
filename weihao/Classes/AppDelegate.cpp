@@ -17,15 +17,19 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto glview = director->getOpenGLView();
     if(!glview) {
         glview = GLView::create("PompaDroid");
-		glview->setFrameSize(960,640);
+		glview->setFrameSize(480,320);
         director->setOpenGLView(glview);
     }
 
 	glview->setDesignResolutionSize(568, 384, ResolutionPolicy::SHOW_ALL);
+	std::vector<std::string> searchPath;
+	searchPath.push_back("sprites.atlasc");
+	searchPath.push_back("joypad.atlas");
+	FileUtils::getInstance()->setSearchPaths(searchPath);
 	//director->setContentScaleFactor(640.0 / 320.0);
 
     // turn on display FPS
-    director->setDisplayStats(true);
+    director->setDisplayStats(false);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
