@@ -21,12 +21,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     }
 
 	// fit resolution
-	glview->setDesignResolutionSize(480.0f, 320.0f, ResolutionPolicy::FIXED_HEIGHT);
-	std::vector<std::string> searchPath;
-	searchPath.push_back("Hero");
-	searchPath.push_back("joypad.atlas");
-	FileUtils::getInstance()->setSearchPaths(searchPath);
-	director->setContentScaleFactor(320.0f / 320.0f);
+	glview->setDesignResolutionSize(480.0f, 320.0f, ResolutionPolicy::FIXED_WIDTH);
+	director->setContentScaleFactor(568.0f / 480.0f);
 
     // turn on display FPS
     director->setDisplayStats(true);

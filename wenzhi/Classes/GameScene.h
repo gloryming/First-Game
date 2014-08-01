@@ -5,7 +5,6 @@
 USING_NS_CC;
 
 class GameLayer;
-class OperateLayer;
 
 class GameScene : public Scene
 {
@@ -18,5 +17,4 @@ public:
 
 private:
 	GameLayer* _gameLayer;
-	OperateLayer* _operateLayer;
 };

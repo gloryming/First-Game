@@ -38,7 +38,6 @@ bool Hero::init()
 {
 	bool ret = false;
 	do {
-		SpriteFrameCache::getInstance()->addSpritesWithFile("sushi.plist");
 		this->initWithSpriteFrameName("hero_idle_00.png");
 
 		Animation *pIdleAnim = this->createAnimation("hero_idle_%02d.png", 6, 12);
