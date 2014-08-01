@@ -73,7 +73,6 @@ void Level::updatePositions()
 	_hero->setPosition(ccp(posX, posY));
 }
 
-
 void Level::didChangeDirectionTo(SimpleDPad *simpleDPad, Vec2 direction)
 {
 	_hero->walkWithDirection(direction);

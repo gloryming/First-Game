@@ -22,6 +22,7 @@ typedef enum _ActionState {
 	kActionStateIdle,
 	kActionStateAttack,
 	kActionStateWalk,
+	kActionStateRun,
 	kActionStateHurt,
 	kActionStateKnockedOut
 } ActionState;

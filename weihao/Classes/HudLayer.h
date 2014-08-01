@@ -14,4 +14,5 @@ public:
 	CREATE_FUNC(HudLayer);
 
 	CC_SYNTHESIZE(SimpleDPad*, _dPad, DPad);
+	SpriteBatchNode *_dPads;
 };

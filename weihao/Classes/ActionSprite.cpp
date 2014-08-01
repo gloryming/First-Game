@@ -5,6 +5,7 @@ ActionSprite::ActionSprite()
 	_idleAction = NULL;
 	_attackAction = NULL;
 	_walkAction = NULL;
+	_runAction = NULL;
 	_hurtAction = NULL;
 	_knockedOutAction = NULL;
 }
@@ -57,6 +58,38 @@ void ActionSprite::walkWithDirection(Vec2 direction)
 	if (_actionState == kActionStateWalk)
 	{
 		_velocity = ccp(direction.x * _walkSpeed, direction.y * _walkSpeed);
+		if (_velocity.x >= 0)
+		{
+			this->setScaleX(1.0);
+		}
+		else
+		{
+			this->setScaleX(-1.0);
+		}
+	}
+}
+
+void ActionSprite::attack()
+{
+	if (_actionState == kActionStateIdle || _actionState == kActionStateAttack || _actionState == kActionStateWalk)
+	{
+		this->stopAllActions();
+		this->runAction(_attackAction);
+		_actionState = kActionStateAttack;
+	}
+}
+
+void ActionSprite::runWithDirection(Vec2 direction)
+{
+	if (_actionState == kActionStateIdle)
+	{
+		this->stopAllActions();
+		this->runAction(_runAction);
+		_actionState = kActionStateRun;
+	}
+	if (_actionState == kActionStateRun)
+	{
+		_velocity = ccp(direction.x * _runSpeed, direction.y * _runSpeed);
 		if (_velocity.x >= 0)
 		{
 			this->setScaleX(1.0);

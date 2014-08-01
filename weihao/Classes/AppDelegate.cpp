@@ -22,10 +22,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
     }
 
 	glview->setDesignResolutionSize(568, 384, ResolutionPolicy::SHOW_ALL);
-	std::vector<std::string> searchPath;
-	searchPath.push_back("sprites.atlasc");
-	searchPath.push_back("joypad.atlas");
-	FileUtils::getInstance()->setSearchPaths(searchPath);
+	//std::vector<std::string> searchPath;
+	//searchPath.push_back("sprites.atlasc");
+	//searchPath.push_back("joypad.atlas");
+	//FileUtils::getInstance()->setSearchPaths(searchPath);
 	//director->setContentScaleFactor(640.0 / 320.0);
 
     // turn on display FPS

@@ -16,6 +16,7 @@ public:
 	void hurtWithDamage(float damage);
 	void knockout();
 	void walkWithDirection(Vec2 direction);
+	void runWithDirection(Vec2 direction);
 
 	//scheduled methods
 	void update(float dt);
@@ -26,12 +27,14 @@ public:
 	CC_SYNTHESIZE_RETAIN(Action*, _walkAction, WalkAction);
 	CC_SYNTHESIZE_RETAIN(Action*, _hurtAction, HurtAction);
 	CC_SYNTHESIZE_RETAIN(Action*, _knockedOutAction, KnockedOutAction);
+	CC_SYNTHESIZE_RETAIN(Action*, _runAction, RunAction);
 
 	//states
 	CC_SYNTHESIZE(ActionState, _actionState, ActionState);
 
 	//attributes
 	CC_SYNTHESIZE(float, _walkSpeed, WalkSpeed);
+	CC_SYNTHESIZE(float, _runSpeed, RunSpeed);
 	CC_SYNTHESIZE(float, _hitPoints, HitPoints);
 	CC_SYNTHESIZE(float, _damage, Damage);
 

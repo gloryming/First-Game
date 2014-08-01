@@ -3,6 +3,18 @@
 
 USING_NS_CC;
 
+typedef enum {
+	NODIR = 0,
+	RIGHT,
+	DOWNRIGHT,
+	DOWN,
+	DOWNLEFT,
+	LEFT,
+	UPLEFT,
+	UP,
+	UPRIGHT
+} DPadDirection;
+
 class SimpleDPad;
 
 class SimpleDPadDelegate
@@ -20,9 +32,10 @@ public:
 	~SimpleDPad();
 	void update(float dt);
 
-	static SimpleDPad* dPadWithFile(__String *fileName, float radius);
-	bool initWithFile(__String *fileName, float radius);
+	static SimpleDPad* dPadWithSpriteFrameName(__String *frameName, float radius);
+	bool initWithSpriteFrameName(__String *frameName, float radius);
 	void updateDirectionForTouchLocation(Vec2 location);
+	void setDPadDirection(DPadDirection dir);
 
 	virtual bool onTouchBegan(Touch *pTouch, Event *pEvent);
 	virtual void onTouchMoved(Touch *pTouch, Event *pEvent);
