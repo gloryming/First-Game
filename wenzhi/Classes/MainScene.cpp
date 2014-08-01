@@ -23,8 +23,8 @@ bool MainScene::init()
 
 	// add the background
 	Sprite* background = Sprite::create("bg_title.png");
-	background->setAnchorPoint(Vec2(0, 0));
-	background->setPosition(origin);
+	background->setPosition(winSize / 2);
+	background->setScale(0.9);
 	this->addChild(background, -1);
 
 	// add the title on the background
@@ -33,10 +33,10 @@ bool MainScene::init()
 	this->addChild(title, 0);
 
 	// add the menu
-	auto miStart = MenuItemImage::create("txt_touchtostart.png", 
-		"txt_touchtostart.png",
+	auto miStart = MenuItemImage::create("txt_touchtostartNormal.png", 
+		"txt_touchtostartSelected.png",
 		CC_CALLBACK_1(MainScene::menuStartCallback, this));
-	miStart->setPosition(Vec2(winSize.width / 2, 130));
+	miStart->setPosition(Vec2(winSize.width / 2, 125));
 
 	auto menu = Menu::create(miStart, NULL);
 	menu->setPosition(Vec2::ZERO);
