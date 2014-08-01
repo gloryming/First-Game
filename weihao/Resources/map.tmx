@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="18" height="12" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="tiles" tilewidth="32" tileheight="32">
-  <image source="../../../GitHub/First-Game/src/tiles.png" width="1024" height="512"/>
+  <image source="tiles.png" width="1024" height="512"/>
  </tileset>
  <layer name="tiledMap" width="18" height="12">
   <data encoding="base64" compression="zlib">
-   eJyt0TlSEwAYBeBExAVQxAVuQBaWJKhEoU7IDgkQFApKBVzQQkEOgIgbFoJ6AJXFhUJQ7iGgl/FzhtZKim/mn796b14wEAgcoYaj1HKM4D/+3SS5wlV66CVEmAhR2ming05ixEnQRZURrnGdUcboI0OWHHkKFCnRzwBlKjzgITPM8og5bnCTCSaZ4ha3ucNdprnHfV6zzApveMs75nnMAk9Y5CnPeM4LXrLEK76xxTbf+cEO7/nAR1ZZY50NPvGZL3xlk5/sssc+v/j9dwPDHOcEJ6mjngZOcZpGztDEWc5xngs000IrIcJEiNJGOx10EiNOgi4uconLdJMkTR8ZsuTIU6BIiX4GKFNhkCGGqTJyCDnGSR1CjtRBp//NkT64/wCdskQV
+   eJyt0UdWEwAUhtF0FRDFHShgKklAca6i6QlED0UXYAMsA0BdgIViGSjqAmiKwoCi+7BuxssSOCeDO3mj7/wvGAgEQoSJECVG8JD3OAmSpEiToY8sOfL0M8AoY4wzwQ1uUqBIiTIVqtSo02CYEZrMMMscj3nCU25xmzvc5R6TTDHNfR7wkEe84z3LfOAjn3jGc17wknkWWGSJV7zmDW/ZYZc99vnOD1ZYZY11NvjMFzb5yje22OYnv/jNH/7y72B/DwgRJkKUGEc4yjHaaKeD43RygpN0cYrTnKGbHno5S5wESVKkydBHlhx5+hngIpe4zBBXuEqBIiXKVKhSo06DYUZotqDjHOdb0HGN6y3oGOQC/wHR2EBL
   </data>
  </layer>
 </map>
