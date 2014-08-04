@@ -3,7 +3,8 @@
 
 SimpleDPad::SimpleDPad()
 {
-	
+	WalkToRun = false;
+	_isHeld = false;
 }
 
 SimpleDPad::~SimpleDPad()
@@ -96,6 +97,12 @@ bool SimpleDPad::onTouchBegan(Touch *pTouch, Event *pEvent)
 	if (distanceSQ <= _radius * _radius)
 	{
 		this->updateDirectionForTouchLocation(location);
+		long _previousTime = _currentTime;
+		_currentTime = getCurrentTime();
+		if ((_currentTime - _previousTime) < 100 && WalkToRun)
+			_delegate->didChangeDirectionToWithRun(this, _direction);
+		else
+			_delegate->didChangeDirectionTo(this, _direction);
 		_isHeld = true;
 		return true;
 	}
@@ -106,6 +113,7 @@ void SimpleDPad::onTouchMoved(Touch *pTouch, Event *pEvent)
 {
 	Vec2 location = pTouch->getLocation();
 	this->updateDirectionForTouchLocation(location);
+	_delegate->didChangeDirectionTo(this, _direction);
 }
 
 void SimpleDPad::onTouchEnded(Touch *pTouch, Event *pEvent)
@@ -115,6 +123,12 @@ void SimpleDPad::onTouchEnded(Touch *pTouch, Event *pEvent)
 	setDPadDirection(NODIR);
 	//log("%f_%f", _direction.x, _direction.y);
 	_delegate->simpleDPadTouchEnded(this);
+	long _previousTime = _currentTime;
+	_currentTime = getCurrentTime();
+	if ((_currentTime - _previousTime) < 100)
+		WalkToRun = true;
+	else
+		WalkToRun = false;
 }
 
 void SimpleDPad::updateDirectionForTouchLocation(Vec2 location)
@@ -171,5 +185,11 @@ void SimpleDPad::updateDirectionForTouchLocation(Vec2 location)
 		_direction = ccp(-1.0, 1.0);
 	}
 	//log("%f_%f", _direction.x, _direction.y);
-	_delegate->didChangeDirectionTo(this, _direction);
+}
+
+long SimpleDPad::getCurrentTime()
+{
+	struct timeval tv;
+	gettimeofday(&tv, NULL);
+	return tv.tv_sec * 1000 + tv.tv_usec / 1000;
 }

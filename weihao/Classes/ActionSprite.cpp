@@ -6,8 +6,12 @@ ActionSprite::ActionSprite()
 	_attackAction = NULL;
 	_walkAction = NULL;
 	_runAction = NULL;
+	_runAttackAction = NULL;
+	_jumpAction = NULL;
+	_jumpAttackAction = NULL;
 	_hurtAction = NULL;
 	_knockedOutAction = NULL;
+	_jumpNum = 0;
 }
 
 ActionSprite::~ActionSprite()
@@ -30,7 +34,7 @@ Animation* ActionSprite::animationWithPrefix(std::string prefix, int startFrameI
 
 void ActionSprite::update(float dt)
 {
-	if (_actionState == kActionStateWalk)
+	if (_actionState == kActionStateWalk || _actionState == kActionStateRun)
 	{
 		_desiredPosition = ccpAdd(this->getPosition(), ccpMult(_velocity, dt));
 	}
@@ -44,6 +48,7 @@ void ActionSprite::idle()
 		this->runAction(_idleAction);
 		_actionState = kActionStateIdle;
 		_velocity = Vec2::ZERO;
+		_jumpNum = 0;
 	}
 }
 
@@ -71,10 +76,22 @@ void ActionSprite::walkWithDirection(Vec2 direction)
 
 void ActionSprite::attack()
 {
-	if (_actionState == kActionStateIdle || _actionState == kActionStateAttack || _actionState == kActionStateWalk)
+	if (_actionState == kActionStateIdle || _actionState == kActionStateWalk)
 	{
 		this->stopAllActions();
 		this->runAction(_attackAction);
+		_actionState = kActionStateAttack;
+	}
+	if (_actionState == kActionStateJump)
+	{
+		this->stopAllActions();
+		this->runAction(_jumpAttackAction);
+		_actionState = kActionStateAttack;
+	}
+	if (_actionState == kActionStateRun)
+	{
+		this->stopAllActions();
+		this->runAction(_runAttackAction);
 		_actionState = kActionStateAttack;
 	}
 }
@@ -98,5 +115,16 @@ void ActionSprite::runWithDirection(Vec2 direction)
 		{
 			this->setScaleX(-1.0);
 		}
+	}
+}
+
+void ActionSprite::jump()
+{
+	if (_actionState == kActionStateIdle || _actionState == kActionStateWalk || _jumpNum < _jumpNumLimit)
+	{
+		this->stopAllActions();
+		this->runAction(_jumpAction);
+		_actionState = kActionStateJump;
+		_jumpNum++;
 	}
 }

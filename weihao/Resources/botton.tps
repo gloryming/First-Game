@@ -22,7 +22,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>pd_sprites.pvr.ccz</filename>
+        <filename>button.pvr.ccz</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -99,7 +99,7 @@
             <key>packageName</key>
             <string>Texture</string>
             <key>javaFileName</key>
-            <filename>pd_sprites.java</filename>
+            <filename>button.java</filename>
             <key>wrap</key>
             <struct type="AndEngineWrap">
                 <key>s</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>pd_sprites.plist</filename>
+        <filename>button.plist</filename>
         <key>mainExtension</key>
         <string></string>
         <key>forceIdenticalLayout</key>
@@ -130,7 +130,7 @@
         <key>globalSpriteSettings</key>
         <struct type="SpriteSettings">
             <key>scale</key>
-            <double>1</double>
+            <double>0.41667</double>
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
             <key>innerPadding</key>
@@ -146,70 +146,10 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../../../resources/hero/hero_runattack_05.png</filename>
-            <filename>../../../resources/hero/hero_walk_00.png</filename>
-            <filename>../../../resources/hero/hero_walk_01.png</filename>
-            <filename>../../../resources/hero/hero_walk_02.png</filename>
-            <filename>../../../resources/hero/hero_walk_03.png</filename>
-            <filename>../../../resources/hero/hero_walk_04.png</filename>
-            <filename>../../../resources/hero/hero_walk_05.png</filename>
-            <filename>../../../resources/hero/hero_walk_06.png</filename>
-            <filename>../../../resources/hero/hero_walk_07.png</filename>
-            <filename>../../../resources/hero/hero_attack_00_00.png</filename>
-            <filename>../../../resources/hero/hero_attack_00_01.png</filename>
-            <filename>../../../resources/hero/hero_attack_00_02.png</filename>
-            <filename>../../../resources/hero/hero_attack_01_00.png</filename>
-            <filename>../../../resources/hero/hero_attack_01_01.png</filename>
-            <filename>../../../resources/hero/hero_attack_01_02.png</filename>
-            <filename>../../../resources/hero/hero_attack_02_00.png</filename>
-            <filename>../../../resources/hero/hero_attack_02_01.png</filename>
-            <filename>../../../resources/hero/hero_attack_02_02.png</filename>
-            <filename>../../../resources/hero/hero_attack_02_03.png</filename>
-            <filename>../../../resources/hero/hero_attack_02_04.png</filename>
-            <filename>../../../resources/hero/hero_getup_00.png</filename>
-            <filename>../../../resources/hero/hero_getup_01.png</filename>
-            <filename>../../../resources/hero/hero_getup_02.png</filename>
-            <filename>../../../resources/hero/hero_getup_03.png</filename>
-            <filename>../../../resources/hero/hero_getup_04.png</filename>
-            <filename>../../../resources/hero/hero_getup_05.png</filename>
-            <filename>../../../resources/hero/hero_hurt_00.png</filename>
-            <filename>../../../resources/hero/hero_hurt_01.png</filename>
-            <filename>../../../resources/hero/hero_hurt_02.png</filename>
-            <filename>../../../resources/hero/hero_idle_00.png</filename>
-            <filename>../../../resources/hero/hero_idle_01.png</filename>
-            <filename>../../../resources/hero/hero_idle_02.png</filename>
-            <filename>../../../resources/hero/hero_idle_03.png</filename>
-            <filename>../../../resources/hero/hero_idle_04.png</filename>
-            <filename>../../../resources/hero/hero_idle_05.png</filename>
-            <filename>../../../resources/hero/hero_jump_00.png</filename>
-            <filename>../../../resources/hero/hero_jump_01.png</filename>
-            <filename>../../../resources/hero/hero_jump_02.png</filename>
-            <filename>../../../resources/hero/hero_jump_03.png</filename>
-            <filename>../../../resources/hero/hero_jump_04.png</filename>
-            <filename>../../../resources/hero/hero_jump_05.png</filename>
-            <filename>../../../resources/hero/hero_jumpattack_00.png</filename>
-            <filename>../../../resources/hero/hero_jumpattack_01.png</filename>
-            <filename>../../../resources/hero/hero_jumpattack_02.png</filename>
-            <filename>../../../resources/hero/hero_jumpattack_03.png</filename>
-            <filename>../../../resources/hero/hero_jumpattack_04.png</filename>
-            <filename>../../../resources/hero/hero_knockout_00.png</filename>
-            <filename>../../../resources/hero/hero_knockout_01.png</filename>
-            <filename>../../../resources/hero/hero_knockout_02.png</filename>
-            <filename>../../../resources/hero/hero_knockout_03.png</filename>
-            <filename>../../../resources/hero/hero_knockout_04.png</filename>
-            <filename>../../../resources/hero/hero_run_00.png</filename>
-            <filename>../../../resources/hero/hero_run_01.png</filename>
-            <filename>../../../resources/hero/hero_run_02.png</filename>
-            <filename>../../../resources/hero/hero_run_03.png</filename>
-            <filename>../../../resources/hero/hero_run_04.png</filename>
-            <filename>../../../resources/hero/hero_run_05.png</filename>
-            <filename>../../../resources/hero/hero_run_06.png</filename>
-            <filename>../../../resources/hero/hero_run_07.png</filename>
-            <filename>../../../resources/hero/hero_runattack_00.png</filename>
-            <filename>../../../resources/hero/hero_runattack_01.png</filename>
-            <filename>../../../resources/hero/hero_runattack_02.png</filename>
-            <filename>../../../resources/hero/hero_runattack_03.png</filename>
-            <filename>../../../resources/hero/hero_runattack_04.png</filename>
+            <filename>../../../GitHub/First-Game/src/joypad.atlas/button_b_selected@2x.png</filename>
+            <filename>../../../GitHub/First-Game/src/joypad.atlas/button_a_normal@2x.png</filename>
+            <filename>../../../GitHub/First-Game/src/joypad.atlas/button_a_selected@2x.png</filename>
+            <filename>../../../GitHub/First-Game/src/joypad.atlas/button_b_normal@2x.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
