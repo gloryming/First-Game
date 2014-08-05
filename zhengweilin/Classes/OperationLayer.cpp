@@ -194,10 +194,8 @@ bool OperationLayer::init(){
 					int d = (s.x - l.x) * (s.x - l.x) + (s.y - l.y) * (s.y - l.y);
 					if (d < 6400){
 						int degrees = (int)(-1 * CC_RADIANS_TO_DEGREES(ccpToAngle(s - l)) + 202.5f);
-						//log("degrees = %d", degrees);
-						//log("Distance = %d", d);
-						log("degrees = %d", degrees);
-						selectDirection((degrees / 45) % 8);
+						std::memset(KeyPressed, 0, 8 * (sizeof(bool)));
+						KeyPressed[degrees / 45 % 8] = true;
 					}
 				}
 			}
@@ -206,8 +204,17 @@ bool OperationLayer::init(){
 		listener1->onTouchesEnded = [=](std::vector<Touch*> touch, Event* event){
 			for (Touch* t : touch){
 				auto p = t->getLocation();
-				if (p.x < 200){
+				if (event->getCurrentTarget() == dpad){
+					std::memset(KeyPressed, 0, sizeof(bool)* 8);
 					dpad->setSpriteFrame("dpad_center@2x.png");
+					int SumOfKeyPressed = 0;
+					for (int i = 0; i < 8; i++){
+						SumOfKeyPressed += KeyPressed[i];
+					}
+					if (!SumOfKeyPressed){
+						this->_delegator->onStop();
+						return;
+					}
 				}
 				else if (p.x >= width - 200 && p.x < width - 100){
 					buttonB->setSpriteFrame("button_b_normal@2x.png");
@@ -236,8 +243,6 @@ bool OperationLayer::init(){
 
 void OperationLayer::update(float dt){
 
-
-
 	if (KeyPressed[B]){
 		this->_delegator->onAttack();
 		KeyPressed[B] = false;
@@ -245,41 +250,33 @@ void OperationLayer::update(float dt){
 	}
 	else if (KeyPressed[UPLEFT]){
 		selectDirection(UPLEFT);
-		this->_delegator->onWalk(Point(-1, 1), 96);
 		return;
 	}
 	else if (KeyPressed[UPRIGHT]){
-		this->_delegator->onWalk(Point(1, 1), 96);
 		selectDirection(UPRIGHT);
 		return;
 	}
 	else if (KeyPressed[DOWNRIGHT]){
-		this->_delegator->onWalk(Point(1, -1), 96);
 		selectDirection(DOWNRIGHT);
 		return;
 	}
 	else if (KeyPressed[DOWNLEFT]){
-		this->_delegator->onWalk(Point(-1, -1), 96);
 		selectDirection(DOWNLEFT);
 		return;
 	}
 	else if (KeyPressed[UP]){
-		this->_delegator->onWalk(Point(0, 1), 96);
 		selectDirection(UP);
 		return;
 	}
 	else if (KeyPressed[DOWN]){
-		this->_delegator->onWalk(Point(0, -1), 96);
 		selectDirection(DOWN);
 		return;
 	}
 	else if (KeyPressed[LEFT]){
-		this->_delegator->onWalk(Point(-1, 0), 96);
 		selectDirection(LEFT);
 		return;
 	}
 	else if (KeyPressed[RIGHT]){
-		this->_delegator->onWalk(Point(1, 0), 96);
 		selectDirection(RIGHT);
 		return;
 	}
@@ -296,27 +293,35 @@ void OperationLayer::selectDirection(int degrees){
 	{
 	case RIGHT:
 		dpad->setSpriteFrame("dpad_right@2x.png");
+		this->_delegator->onWalk(Point(1, 0), 96);
 		break;
 	case DOWNRIGHT:
 		dpad->setSpriteFrame("dpad_downright@2x.png");
+		this->_delegator->onWalk(Point(1, -1), 96);
 		break;
 	case DOWN:
 		dpad->setSpriteFrame("dpad_down@2x.png");
+		this->_delegator->onWalk(Point(0, -1), 96);
 		break;
 	case DOWNLEFT:
 		dpad->setSpriteFrame("dpad_downleft@2x.png");
+		this->_delegator->onWalk(Point(-1, -1), 96);
 		break;
 	case LEFT:
 		dpad->setSpriteFrame("dpad_left@2x.png");
+		this->_delegator->onWalk(Point(-1, 0), 96);
 		break;
 	case UPLEFT:
 		dpad->setSpriteFrame("dpad_upleft@2x.png");
+		this->_delegator->onWalk(Point(-1, 1), 96);
 		break;
 	case UP:
 		dpad->setSpriteFrame("dpad_up@2x.png");
+		this->_delegator->onWalk(Point(0, 1), 96);
 		break;
 	case UPRIGHT:
 		dpad->setSpriteFrame("dpad_upright@2x.png");
+		this->_delegator->onWalk(Point(1, 1), 96);
 		break;
 	default:
 		break;
