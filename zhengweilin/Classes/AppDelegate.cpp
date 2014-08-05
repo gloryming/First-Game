@@ -36,6 +36,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
    std::vector<std::string> searchPath;
    searchPath.push_back("Hero");
    searchPath.push_back("Sprites");
+   searchPath.push_back("joypad.atlas");
    CCFileUtils::getInstance()->setSearchPaths(searchPath);
 
    srand(time(NULL));
@@ -53,6 +54,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	//run
     director->runWithScene(scene);
 	
+//	Scheduler::Scheduler()->setTimeScalse(0.5f);
 	
 
     return true;

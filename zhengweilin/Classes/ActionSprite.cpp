@@ -39,7 +39,6 @@ void ActionSprite::walk(Point direction){
 	}
 }
 
-
 void ActionSprite::hurt(int damage){
 	if (_changeState(ACTION_STATE_HURT)){
 		runAction(_hurtAction);
@@ -54,6 +53,10 @@ void ActionSprite::knockout(){
 	if (_changeState(ACTION_STATE_KNOCKOUT)){
 		runAction(_knockoutAction);
 	}
+}
+
+void ActionSprite::jump(){
+
 }
 
 bool ActionSprite::_changeState(ActionState state){

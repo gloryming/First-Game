@@ -29,6 +29,7 @@ bool GameLayer::init(){
 		
 		_hero = Hero::create();
  		_hero->setPosition(80, 80);
+		_hero->setZOrder(80);
 		_hero->walk(Point(1, 1));
 		_actors->addChild(_hero);
 
@@ -36,48 +37,40 @@ bool GameLayer::init(){
 		for (int i = 0; i < 5; i++){
 			Robot* robot = Robot::create();
 			robot->setPosition(rand() % 400 + 80, rand() % 100);
+			robot->setZOrder(100 - robot->getPosition().y);
 			robot->idle();
 			_robots->addObject(robot);
 			_actors->addChild(robot);
+
 		}
-	//	auto sp = Hero::create();
-	////	sp->idle();
-	//	sp->setPosition(80, 80);
-	//	_actors->addChild(sp);
-
-		//Sprite* sp = Sprite::create("hero_walk_00.png");
-		//sp->setPosition(80, 80);
-		//this->addChild(sp);
-
-		//auto animation1 = Animation::create();
-
-		//auto sfc = SpriteFrameCache::getInstance();
-		//
-
-		//animation1->addSpriteFrame(sfc->getSpriteFrameByName("hero_idle_00.png"));
-		//animation1->addSpriteFrame(sfc->getSpriteFrameByName("hero_idle_01.png"));
-		//animation1->addSpriteFrame(sfc->getSpriteFrameByName("hero_idle_02.png"));
-		//animation1->addSpriteFrame(sfc->getSpriteFrameByName("hero_idle_03.png"));
-		//animation1->addSpriteFrame(sfc->getSpriteFrameByName("hero_idle_04.png"));
-		//animation1->addSpriteFrame(sfc->getSpriteFrameByName("hero_idle_05.png"));
-
-		//animation1->setDelayPerUnit(1.0f / 6.0f);
-		//animation1->setRestoreOriginalFrame(true);
-		//auto action = Animate::create(animation1);
-		//auto sp = Sprite::create();
-
-		//this->addChild(sp);
-		//
-		//sp->setPosition(80, 80);
-		//sp->runAction(RepeatForever::create(action));
-
-		//Sprite* sp = Sprite::create("Hero/hero_idle_00.png");
-		//sp->setPosition(80, 80);
-		//this->addChild(sp);
-
 
 		ret = true;
 	} while (0);
 
 	return ret;
+}
+
+void GameLayer::onAttack(){
+	_hero->attack();
+}
+
+void GameLayer::onWalk(Point direction, float distance){
+	direction *= 2;
+	_hero->walk(direction);
+	if (_hero->getPosition().x > width * 0.75 && direction.x > 0){
+		this->_map->setPosition(_map->getPosition() - Point(direction.x, 0));
+		_hero->setPosition(_hero->getPosition() + Point(0, direction.y));
+		
+	}
+	else if (_hero->getPosition().x < width * 0.25 && direction.x < 0){
+		this->_map->setPosition(_map->getPosition() - Point(direction.x, 0));
+		_hero->setPosition(_hero->getPosition() + Point(0, direction.y));
+	}
+	else{
+		_hero->setPosition(_hero->getPosition() + direction);
+	}
+}
+
+void GameLayer::onStop(){
+	_hero->idle();
 }

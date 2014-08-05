@@ -11,6 +11,7 @@ typedef enum{
 	ACTION_STATE_ATTACK,
 	ACTION_STATE_HURT,
 	ACTION_STATE_KNOCKOUT,
+	ACTION_STATE_JUMP
 }ActionState;
 
 class ActionSprite : public cocos2d::Sprite
@@ -24,12 +25,14 @@ public:
 	void attack();
 	void hurt(int damage);
 	void knockout();
+	void jump();
 
 	CC_SYNTHESIZE_RETAIN(cocos2d::Action*, _idleAction, IdleAction);
 	CC_SYNTHESIZE_RETAIN(cocos2d::Action*, _attackAction, AttackAction);
 	CC_SYNTHESIZE_RETAIN(cocos2d::Action*, _hurtAction, HurtAction);
 	CC_SYNTHESIZE_RETAIN(cocos2d::Action*, _knockoutAction, KnockoutAction);
 	CC_SYNTHESIZE_RETAIN(cocos2d::Action*, _walkAction, WalkAction);
+	CC_SYNTHESIZE_RETAIN(cocos2d::Action*, _jumpAction, JumpAction)
 
 	//¾«Áéµ±Ç°×´Ì¬
 	CC_SYNTHESIZE(ActionState, _currentState, ActionState);
