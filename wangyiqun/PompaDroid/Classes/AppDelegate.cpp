@@ -24,7 +24,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	//
 	//auto Size = director->getWinSize();
 
-	//glview->setFrameSize(720,480);
+	glview->setFrameSize(820,540);
 	glview->setDesignResolutionSize(480.0f, 320.0f, ResolutionPolicy::FIXED_HEIGHT);
 	std::vector<std::string> searchPath;
 	searchPath.push_back("Resources");
@@ -32,7 +32,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	director->setContentScaleFactor(384.0f / 320.0f);
 
     // turn on display FPS
-    director->setDisplayStats(true);
+    //director->setDisplayStats(true);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);

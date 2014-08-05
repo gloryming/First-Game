@@ -33,7 +33,8 @@ bool HelloWorld::init()
 
 	// 
 	auto startPushButton = MenuItemImage::create("txt_touchtostart.png", "txt_touchtostart.png", [&](Ref* sender){
-		{	log("selected");
+		{	
+		//log("selected");
 		Director::getInstance()->setContentScaleFactor(320.0/320.0f);
 		auto transitions = TransitionFade::create(0.3f, GameScene::createScene());
 		Director::getInstance()->replaceScene(transitions);

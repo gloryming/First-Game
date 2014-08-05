@@ -2,6 +2,7 @@
 #define __BACK_LAYER_H__
 
 #include "cocos2d.h"
+#include "Hero.h"
 
 class BackLayer: public cocos2d::Layer
 {
@@ -18,7 +19,24 @@ public:
 
 	// implement the "static create()" method manually
 	CREATE_FUNC(BackLayer);
-	cocos2d::TMXTiledMap* m_pTiledMap;
+	cocos2d::TMXTiledMap* m_TiledMap;
+
+	CC_SYNTHESIZE(cocos2d::Point, m_velocity, Velocity);
+	CC_SYNTHESIZE_READONLY(Hero*, m_hero, Hero);
+
+	void onHeroWalk(cocos2d::Point direction, float distance);
+	void onHeroAttack();
+	void onHeroStop();
+	void update(float dt);
+	void updateHero(float dt);
+
+	float m_tileWidth;
+	float m_tileHeight;
+
+	float m_screenWidth;
+	float m_screenHeight;
+	cocos2d::Point m_origin;
+	cocos2d::SpriteBatchNode *m_spriteNodes;
 };
 
 #endif // __PLAY_SCENE_H__
