@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="10" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="tiles" tilewidth="32" tileheight="32">
+  <image source="../../../src/tiles.png" width="1024" height="512"/>
+ </tileset>
+ <layer name="主要" width="100" height="10">
+  <data encoding="base64" compression="zlib">
+   eJzt1jVzVVEYhtGDBXd3EgghuLsHQkKQAMHd3R0q3N2hwt0dKtzd4c+wmtvsSZ00t1izZ848M99bnoQoigpThAQKUJBCwfd4kzdNfRqQTEPa0JZ2pNCIVBrThKZB04zmtKAlrWgdNO3pQEc60ZkuQZNIUnxPlEYf+pLOMHIYTj8yyKQ/WQwImoEMYjDZDGFo0IxgJKMYzRjGBk0vesf3RFOZxnRmsJRlLGcms5jNHOYyL2jms4CFLGIxS4JmBStZxWrWsDZoJjMlvifawEY2sZkDHOQQW9jKNrazg51Bs4vd7GEv+9gfNIc5wlGOcZwTQbOO9fE90WnOcJZz3OYOdznPBS5yictcCZqrXOM6N7jJraC5x30e8JBHPA6ak5yK74me8ZwXvOQb3/nBK17zhre8433QfOAjn/jMF74GzU9+8Zs//OVf0DzhaXxPVMCPV0EKUZgiJFCUYhSnBCUpRWnKUJZylKcCFalEZapQlWpUpwY1qUVt6lCXerncze89sTuxN6/3JJJEfRqQTENSaEQqjWlCU5rRnBa0pBWtaUNb2tGeDnSkE53pQle60Z0e9Mzlbn7vid2JvXm9pxe9SaMPfUmnHxlk0p8sBjCQQQwmmyEMZRg5DGcEIxnFaMYwlnGMZwITmZTL3fzeE7sTe/N6z3/I52Ru
+  </data>
+ </layer>
+ <layer name="填充" width="100" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwVAHzYwMDC2MA2N3I9DepgGyGxugd1hg8/9iIH8JED8Csh8D8UMG6rNxgYVAexcx0s5eUt0DCwt6uQfmf2RwGMg/MkBp9CDQ3kODKH/QOywGm/9HwSgY7AAAxWpTUQ==
+  </data>
+ </layer>
+</map>

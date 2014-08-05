@@ -1,5 +1,5 @@
 #include "PompaDroidLayer.h"
-#include "LevelLayer.h"
+#include "GameScene.h"
 
 USING_NS_CC;
 
@@ -53,6 +53,6 @@ bool PompaDroid::init()
 
 void PompaDroid::menustartCallback(Ref* pSender)
 {
-	auto scene = Level::createScene();
+	auto scene = Game::create();
 	Director::sharedDirector()->replaceScene(scene);
 }
