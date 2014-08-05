@@ -22,7 +22,7 @@ bool GameLayer::init()
 	this->addChild(map, -10);
 
 	getHero()->walk = CC_CALLBACK_2(GameLayer::Hero_walk, this);
-	getHero()->idle = CC_CALLBACK_0(GameLayer::Hero_stop, this);
+	getHero()->jump = CC_CALLBACK_0(GameLayer::Hero_jump, this);
 	scheduleUpdate();
 	return true;
 }
@@ -35,13 +35,16 @@ void GameLayer::update(float dt)
 
 void GameLayer::checkstate()
 {
-
-	if (getHero()->getHeroDirection() != None)
+	if (getHero()->getHeroState()==kActionStateWalk)
 	{
 		_hero->walk(getHero()->getPosition(),1.0f);
 	}
-	else {
-		_hero->idle();
+	else if (getHero()->getHeroState() == kActionStateRun){
+		_hero->walk(getHero()->getPosition(), 1.0f);
+	}
+	else if (getHero()->getHeroState() == kActionStateJump)
+	{
+		Hero_jump();
 	}
 }
 void GameLayer::moveBackground()
@@ -93,15 +96,24 @@ void GameLayer::Hero_walk(Point destination, float duration){
 	else
 		this->getHero()->setFlipX(true);
 	Size size = Director::getInstance()->getWinSize();
-
+	if (_hero->getHeroState()==kActionStateWalk)
 	destination = destination + *angle*getHero()->getWalkSpeed();
+	else 
+		destination = destination + *angle*getHero()->getRunSpeed();
 	destination.x = MIN(MAX(getHero()->getcenterToSides(), destination.x ), map->getMapSize().width*map->getTileSize().width-getHero()->getcenterToSides() );
 	destination.y = MIN(MAX(getHero()->getcenterToBottom(), destination.y  ), map->getTileSize().width * 6);
 	this->getHero()->setPosition(destination);
-	//this->getHero()->runAction(MoveTo::create(duration, destination));
 }
 
-void GameLayer::Hero_stop()
+
+void GameLayer::Hero_jump()
 {
-	this->getHero()->Runidleaction();
+	if (getHero()->getJumptimes() == 1)
+	{
+		_hero->setHeroposition(_hero->getPosition());
+	auto jumpaction = JumpTo::create(0.5f,_hero->getPosition(),getHero()->getContentSize().height/2,1);
+	_hero->runAction(jumpaction);
+	log("jump");
+	getHero()->setJumptimes(0);
+	}
 }

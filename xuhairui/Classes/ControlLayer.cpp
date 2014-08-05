@@ -94,8 +94,6 @@ void ControlLayer::judgeDirection(Sprite *target,Point touch)
 		getHero()->setHeroDirection(DownLeft);
 		temp = SpriteFrameCache::getInstance()->getSpriteFrameByName("dpad_downleft@2x.png");
 	}
-	if (getHero()->getHeroState()!=kActionStateWalk)
-	this->getHero()->Runwalkaction();
 	dpad_center->setDisplayFrame(temp);
 }
 
@@ -111,16 +109,55 @@ bool ControlLayer::onTouchBegan(Touch *touch, Event *event)
 	{
 		if (target == dpad_center)
 		{
+			long temp = time;
+			time=getCurrentTime();
 			judgeDirection(target, touch->getLocation());
+			if (time - temp > 500)
+			{
+				getHero()->updateHerostate(kActionStateWalk);
+				getHero()->Runwalkaction();
+			}
+			else
+			{
+				getHero()->updateHerostate(kActionStateRun);
+				getHero()->Runrunaction();
+			}
 		}
 		else if (target == button_a)
 		{
 			log("target_a");
+			SpriteFrame *temp = SpriteFrameCache::getInstance()->getSpriteFrameByName("button_a_selected@2x.png");
+			button_a->setSpriteFrame(temp);
+			if (getHero()->getHeroState() == kActionStateJump)
+			{
+				getHero()->updateHerostate(kActionStateJumpattack);
+				getHero()->Runjumpacctackaction();
+			}
+			else if (getHero()->getHeroState() == kActionStateRun)
+			{
+				getHero()->updateHerostate(kActionStateRunattack);
+				getHero()->Runrunattackaction();
+			}
+			else if (getHero()->getHeroState() == kActionStateIdle || getHero()->getHeroState() == kActionStateAttack)
+			{				
+				
+				getHero()->updateHerostate(kActionStateAttack);
+				if (getHero()->getAttacktimes()==0)
+				   getHero()->Runattack_00_action();
+				int tmp = getHero()->getAttacktimes();
+				getHero()->setAttacktimes(++tmp);
 
+			}
 		}
 		else if (target == button_b)
 		{
-			log("target_b");
+			SpriteFrame *temp = SpriteFrameCache::getInstance()->getSpriteFrameByName("button_b_selected@2x.png");
+			button_b->setSpriteFrame(temp);
+			if (getHero()->getHeroState()==kActionStateIdle)
+			{
+			   getHero()->updateHerostate(kActionStateJump);
+			   getHero()->Runjumpaction();
+			}
 		}
 		else{
 			//chooseTowerType = ANOTHER;
@@ -168,19 +205,34 @@ void ControlLayer::onTouchEnded(Touch* touch, Event* event)
 	if (target == dpad_center)
 	{
 		getHero()->setHeroDirection ( None);
+		getHero()->setHeroState(kActionStateIdle);
+		getHero()->Runidleaction();
+		SpriteFrame *temp = SpriteFrameCache::getInstance()->getSpriteFrameByName("dpad_center@2x.png");
+		dpad_center->setSpriteFrame(temp);
+
 	}
 	else if (target == button_a)
 	{
 		log("target_a");
+		SpriteFrame *temp = SpriteFrameCache::getInstance()->getSpriteFrameByName("button_a_normal@2x.png");
+		button_a->setSpriteFrame(temp);
 
 	}
 	else if (target == button_b)
 	{
-		log("target_b");
+		SpriteFrame *temp = SpriteFrameCache::getInstance()->getSpriteFrameByName("button_b_normal@2x.png");
+		button_b->setSpriteFrame(temp);
 	}
 	else{
 		//chooseTowerType = ANOTHER;
 		log("error");
 	}
 	
+}
+
+long ControlLayer::getCurrentTime()
+{
+	struct timeval tv;
+	gettimeofday(&tv, NULL);
+	return tv.tv_sec * 1000 + tv.tv_usec / 1000;
 }

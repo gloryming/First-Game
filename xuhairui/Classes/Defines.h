@@ -7,7 +7,11 @@ typedef enum _ActionState {
 	kActionStateAttack,
 	kActionStateWalk,
 	kActionStateHurt,
-	kActionStateKnockedOut
+	kActionStateKnockedOut,
+	kActionStateRun,
+	kActionStateJump,
+	kActionStateJumpattack,
+	kActionStateRunattack
 } ActionState;
 
 typedef enum _WalkDirection{

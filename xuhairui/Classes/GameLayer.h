@@ -15,7 +15,7 @@ public:
 	void moveBackground();
 	void update(float dt);
 	void Hero_walk(Point, float);
-	void Hero_stop();
+	void Hero_jump();
 	CC_SYNTHESIZE(float, actualWidth, ActualWidth);
 	CC_SYNTHESIZE(Hero*, _hero, Hero);
 private:

@@ -11,16 +11,16 @@ public:
 	virtual bool init();
 	void judgeDirection(Sprite *,Point touch);
 	CREATE_FUNC(ControlLayer);
-	//void updateHeroNextPosition(Point location);
 	bool onTouchBegan(Touch *touch, Event *event);
 	void onTouchEnded(Touch* touch, Event* event);
 	void onTouchMoved(Touch*touch, Event*event);
 	CC_SYNTHESIZE(Hero*, _hero, Hero);
+	long ControlLayer::getCurrentTime();
 private:
 	Sprite *dpad_center;
 	Sprite *button_a;
 	Sprite *button_b;
-
+	long  time;
 };
 
 #endif 
