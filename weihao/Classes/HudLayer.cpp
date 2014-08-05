@@ -15,8 +15,9 @@ bool HudLayer::init()
 {
 	if (!Layer::init())
 		return false;
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("dPad.plist");
+	SpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("dPad.plist");
 	_dPads = SpriteBatchNode::create("dPad.pvr.ccz");
+	_dPads->getTexture()->setAliasTexParameters();
 	this->addChild(_dPads,0);
 	_dPad = SimpleDPad::dPadWithSpriteFrameName(__String::create("dpad_center@2x.png"), 64);
 	_dPad->setPosition(ccp(64.0, 64.0));

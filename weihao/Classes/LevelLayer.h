@@ -15,6 +15,7 @@ public:
 	virtual bool init() override;
 	virtual void didChangeDirectionTo(SimpleDPad *simpleDPad, Vec2 direction);
 	virtual void isHoldingDirection(SimpleDPad *simpleDPad, Vec2 direction);
+	virtual void didChangeDirectionToWithRun(SimpleDPad *simpleDPad, Vec2 direction);
 	virtual void simpleDPadTouchEnded(SimpleDPad *simpleDPad);
 	CREATE_FUNC(Level);
 
@@ -26,6 +27,7 @@ public:
 	CC_SYNTHESIZE_RETAIN(TMXTiledMap*, _map, map);
 	CC_SYNTHESIZE_RETAIN(TMXLayer*, _tiledMap, tiledMap);
 	SpriteBatchNode *_actors;
+	SpriteBatchNode *_buttons;
 	Hero *_hero;
 
 private:
