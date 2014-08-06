@@ -16,6 +16,10 @@ public:
 
 	void walk(Direction dir);
 	void stop();
+	void stop(float dt);
+	void jump(Direction dir);
+	void attack();
+
 	/*void walk(Direction dir);
 	void stop();*/
 };

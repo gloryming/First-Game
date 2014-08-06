@@ -24,8 +24,9 @@ bool GameScene::init()
 	this->addChild(_gameLayer, 0);
 
 	_operateLayer = OperateLayer::create();
-	_operateLayer->setHero(_gameLayer->getHero());
 	this->addChild(_operateLayer, 10);
+
+	_operateLayer->setHero(_gameLayer->getHero());
 
 	scheduleUpdate();
 

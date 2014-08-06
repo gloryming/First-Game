@@ -21,4 +21,6 @@ public:
 
 	CC_SYNTHESIZE(Hero*, _hero, Hero);
 	Sprite* _operator;
+	Sprite* _buttonA;
+	Sprite* _buttonB;
 };

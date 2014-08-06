@@ -4,226 +4,174 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>button_a_normal@2x.png</key>
+            <key>button_a_normal.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{798,488},{122,120}}</string>
+                <string>{{180,408},{62,62}}</string>
                 <key>offset</key>
-                <string>{-1,0}</string>
+                <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{2,4},{122,120}}</string>
+                <string>{{1,1},{62,62}}</string>
+                <key>sourceSize</key>
+                <string>{64,64}</string>
+            </dict>
+            <key>button_a_selected.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{180,344},{62,62}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{1,1},{62,62}}</string>
+                <key>sourceSize</key>
+                <string>{64,64}</string>
+            </dict>
+            <key>button_b_normal.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{116,408},{62,62}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{1,1},{62,62}}</string>
+                <key>sourceSize</key>
+                <string>{64,64}</string>
+            </dict>
+            <key>button_b_selected.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{116,344},{62,62}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{1,1},{62,62}}</string>
+                <key>sourceSize</key>
+                <string>{64,64}</string>
+            </dict>
+            <key>dpad_center.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{116,230},{112,112}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{8,8},{112,112}}</string>
                 <key>sourceSize</key>
                 <string>{128,128}</string>
             </dict>
-            <key>button_a_normal@2x~ipad.png</key>
+            <key>dpad_down.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{734,2},{242,240}}</string>
+                <string>{{116,116},{112,112}}</string>
                 <key>offset</key>
-                <string>{-1,0}</string>
+                <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{6,8},{242,240}}</string>
-                <key>sourceSize</key>
-                <string>{256,256}</string>
-            </dict>
-            <key>button_a_selected@2x.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{674,468},{122,120}}</string>
-                <key>offset</key>
-                <string>{-1,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{2,4},{122,120}}</string>
+                <string>{{8,8},{112,112}}</string>
                 <key>sourceSize</key>
                 <string>{128,128}</string>
             </dict>
-            <key>button_a_selected@2x~ipad.png</key>
+            <key>dpad_downleft.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{490,2},{242,240}}</string>
+                <string>{{344,2},{112,112}}</string>
                 <key>offset</key>
-                <string>{-1,0}</string>
+                <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{6,8},{242,240}}</string>
-                <key>sourceSize</key>
-                <string>{256,256}</string>
-            </dict>
-            <key>button_b_normal@2x.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{898,366},{122,120}}</string>
-                <key>offset</key>
-                <string>{-1,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{2,4},{122,120}}</string>
+                <string>{{8,8},{112,112}}</string>
                 <key>sourceSize</key>
                 <string>{128,128}</string>
             </dict>
-            <key>button_b_normal@2x~ipad.png</key>
+            <key>dpad_downright.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{246,2},{242,240}}</string>
+                <string>{{230,2},{112,112}}</string>
                 <key>offset</key>
-                <string>{-1,0}</string>
+                <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{6,8},{242,240}}</string>
-                <key>sourceSize</key>
-                <string>{256,256}</string>
-            </dict>
-            <key>button_b_selected@2x.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{898,244},{122,120}}</string>
-                <key>offset</key>
-                <string>{-1,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{2,4},{122,120}}</string>
+                <string>{{8,8},{112,112}}</string>
                 <key>sourceSize</key>
                 <string>{128,128}</string>
             </dict>
-            <key>button_b_selected@2x~ipad.png</key>
+            <key>dpad_left.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{242,240}}</string>
-                <key>offset</key>
-                <string>{-1,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{6,8},{242,240}}</string>
-                <key>sourceSize</key>
-                <string>{256,256}</string>
-            </dict>
-            <key>dpad_center@2x.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{450,468},{222,222}}</string>
+                <string>{{116,2},{112,112}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{17,17},{222,222}}</string>
+                <string>{{8,8},{112,112}}</string>
                 <key>sourceSize</key>
-                <string>{256,256}</string>
+                <string>{128,128}</string>
             </dict>
-            <key>dpad_down@2x.png</key>
+            <key>dpad_right.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{674,244},{222,222}}</string>
+                <string>{{2,344},{112,112}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{17,17},{222,222}}</string>
+                <string>{{8,8},{112,112}}</string>
                 <key>sourceSize</key>
-                <string>{256,256}</string>
+                <string>{128,128}</string>
             </dict>
-            <key>dpad_downleft@2x.png</key>
+            <key>dpad_up.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{450,244},{222,222}}</string>
+                <string>{{2,230},{112,112}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{17,17},{222,222}}</string>
+                <string>{{8,8},{112,112}}</string>
                 <key>sourceSize</key>
-                <string>{256,256}</string>
+                <string>{128,128}</string>
             </dict>
-            <key>dpad_downright@2x.png</key>
+            <key>dpad_upleft.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{226,692},{222,222}}</string>
+                <string>{{2,116},{112,112}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{17,17},{222,222}}</string>
+                <string>{{8,8},{112,112}}</string>
                 <key>sourceSize</key>
-                <string>{256,256}</string>
+                <string>{128,128}</string>
             </dict>
-            <key>dpad_left@2x.png</key>
+            <key>dpad_upright.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{226,468},{222,222}}</string>
+                <string>{{2,2},{112,112}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{17,17},{222,222}}</string>
+                <string>{{8,8},{112,112}}</string>
                 <key>sourceSize</key>
-                <string>{256,256}</string>
-            </dict>
-            <key>dpad_right@2x.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{226,244},{222,222}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{17,17},{222,222}}</string>
-                <key>sourceSize</key>
-                <string>{256,256}</string>
-            </dict>
-            <key>dpad_up@2x.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,692},{222,222}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{17,17},{222,222}}</string>
-                <key>sourceSize</key>
-                <string>{256,256}</string>
-            </dict>
-            <key>dpad_upleft@2x.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,468},{222,222}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{17,17},{222,222}}</string>
-                <key>sourceSize</key>
-                <string>{256,256}</string>
-            </dict>
-            <key>dpad_upright@2x.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,244},{222,222}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{17,17},{222,222}}</string>
-                <key>sourceSize</key>
-                <string>{256,256}</string>
+                <string>{128,128}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -233,9 +181,9 @@
             <key>realTextureFileName</key>
             <string>joypad.pvr.ccz</string>
             <key>size</key>
-            <string>{1024,1024}</string>
+            <string>{512,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:1d77fdc1909606150e42995edeb9ef68$</string>
+            <string>$TexturePacker:SmartUpdate:5c39537d8d7e3888fe970d481a8c70c8$</string>
             <key>textureFileName</key>
             <string>joypad.pvr.ccz</string>
         </dict>
