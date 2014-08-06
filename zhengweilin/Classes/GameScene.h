@@ -1,8 +1,8 @@
 #pragma once
-#include "cocos2d.h"
-#include "OperationLayer.h"
-#include "GameLayer.h"
 
+#include "cocos2d.h"
+#include "GameLayer.h"
+#include "OperationLayer.h"
 
 USING_NS_CC;
 
