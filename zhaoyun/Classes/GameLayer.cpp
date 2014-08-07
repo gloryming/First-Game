@@ -3,6 +3,9 @@
 #include "Hero.h"
 
 GameLayer::GameLayer(){
+	_map = NULL;
+	_tiledMap = NULL;
+	_hero = NULL;
 }
 
 
