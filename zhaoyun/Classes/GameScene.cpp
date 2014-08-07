@@ -24,9 +24,7 @@ bool GameScene::init()
         this->addChild(_optionLayer, 1);
 		_optionLayer->getDPad()->setDelegate(_gameLayer);      
         
-
         ret = true;
     } while (0);
-
     return ret;
 }

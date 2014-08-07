@@ -1,6 +1,5 @@
-#ifndef Philon_cocos2dx_PompaDroid_GAMESCENE_H_
-#define Philon_cocos2dx_PompaDroid_GAMESCENE_H_
-#pragma once
+#ifndef _GAMESCENE_H_
+#define _GAMESCENE_H_
 
 #include <cocos2d.h>
 #include "GameLayer.h"

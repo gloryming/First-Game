@@ -1,10 +1,10 @@
-#include "cocos2d.h"
 #pragma once
+#include "cocos2d.h"
 #include "Defines.h"
 
 USING_NS_CC;
 
-class ActionSprite : public cocos2d::Sprite
+class ActionSprite : public Sprite
 {
 public:
 	ActionSprite();
@@ -13,10 +13,11 @@ public:
 	//action methods
 	void idle();
 	void attack();
-	void hurtWithDamage(float damage);
-	void knockout();
 	void walkWithDirection(Vec2 direction);
 	void runWithDirection(Vec2 direction);
+	void jump();
+	void hurtWithDamage(float damage);
+	void knockout();
 
 	//scheduled methods
 	void update(float dt);
@@ -25,9 +26,12 @@ public:
 	CC_SYNTHESIZE_RETAIN(Action*, _idleAction, IdleAction);
 	CC_SYNTHESIZE_RETAIN(Action*, _attackAction, AttackAction);
 	CC_SYNTHESIZE_RETAIN(Action*, _walkAction, WalkAction);
+	CC_SYNTHESIZE_RETAIN(Action*, _runAction, RunAction);
+	CC_SYNTHESIZE_RETAIN(Action*, _runAttackAction, RunAttackAction);
+	CC_SYNTHESIZE_RETAIN(Action*, _jumpAction, JumpAction);
+	CC_SYNTHESIZE_RETAIN(Action*, _jumpAttackAction, JumpAttackAction);
 	CC_SYNTHESIZE_RETAIN(Action*, _hurtAction, HurtAction);
 	CC_SYNTHESIZE_RETAIN(Action*, _knockedOutAction, KnockedOutAction);
-	CC_SYNTHESIZE_RETAIN(Action*, _runAction, RunAction);
 
 	//states
 	CC_SYNTHESIZE(ActionState, _actionState, ActionState);
@@ -35,6 +39,8 @@ public:
 	//attributes
 	CC_SYNTHESIZE(float, _walkSpeed, WalkSpeed);
 	CC_SYNTHESIZE(float, _runSpeed, RunSpeed);
+	CC_SYNTHESIZE(float, _jumpHight, JumpHight);
+	CC_SYNTHESIZE(int, _jumpLimit, JumpLimit);
 	CC_SYNTHESIZE(float, _hitPoints, HitPoints);
 	CC_SYNTHESIZE(float, _damage, Damage);
 
@@ -46,5 +52,6 @@ public:
 	CC_SYNTHESIZE(float, _centerToSides, CenterToSides);
 	CC_SYNTHESIZE(float, _centerToBottom, CenterToBottom);
 
-	Animation* createAnimation(std::string prefix, int startFrameIdx, int frameCount, float delay);
+	int _jumpNum;
+	Animation* animationWithPrefix(std::string prefix, int startFrameIdx, int frameCount, float delay);
 };

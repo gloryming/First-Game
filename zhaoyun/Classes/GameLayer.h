@@ -5,6 +5,7 @@
 #include "OptionLayer.h"
 #include "SimpleDPadSprite.h"
 
+USING_NS_CC;
 class GameLayer : public Layer, public SimpleDPadDelegate
 {
 public:
@@ -15,6 +16,7 @@ public:
 	virtual void didChangeDirectionTo(SimpleDPad *simpleDPad, Vec2 direction);
 	virtual void isHoldingDirection(SimpleDPad *simpleDPad, Vec2 direction);
 	virtual void simpleDPadTouchEnded(SimpleDPad *simpleDPad);
+	virtual void didChangeDirectionToWithRun(SimpleDPad *simpleDPad, Vec2 direction);
 	CREATE_FUNC(GameLayer);
 
 	void initHero();
@@ -26,9 +28,26 @@ public:
 	CC_SYNTHESIZE_RETAIN(TMXLayer*, _tiledMap, tiledMap);
 	SpriteBatchNode *_actors;
 	Hero *_hero;
+	SpriteBatchNode *_buttons;
 };
 
 // End of Philon_cocos2dx_PompaDroid_GAMELAYER_H_
 
 // Philon
 // 2013-10-17
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

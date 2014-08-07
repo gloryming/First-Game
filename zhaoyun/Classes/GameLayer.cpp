@@ -1,21 +1,27 @@
 #include "GameLayer.h"
-
 #include "cocos2d.h"
+#include "Hero.h"
 
-using namespace cocos2d;
+GameLayer::GameLayer(){
+}
 
-GameLayer::GameLayer()
-{}
 
 GameLayer::~GameLayer()
 {}
 
 bool GameLayer::init()
 {
-	Size winSize = Director::getInstance()->getWinSize();
-    bool ret = false;
+	if (!Layer::init())
+	{
+		return false;
+	}
 
-    do {
+	Size winSize = Director::getInstance()->getWinSize();
+
+	// init map
+	bool bRet = false;
+	do
+	{
 		CC_BREAK_IF(!Layer::init());
 
 		this->setmap(TMXTiledMap::create("map.tmx"));
@@ -23,21 +29,85 @@ bool GameLayer::init()
 		_tiledMap->setAnchorPoint(Vec2(0, 1));
 		_tiledMap->setPosition(Vec2(0,winSize.height));
 		this->addChild(_map, -1);
-		ret = true;
+		bRet = true;
 	} while (0);
 
 	// add actors
 	SpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("pd_sprites.plist");
 	_actors = SpriteBatchNode::create("pd_sprites.pvr.ccz");
-	_actors->getTexture()->setAliasTexParameters();
+	//_actors->getTexture()->setAliasTexParameters();
 	this->addChild(_actors, 0);
 
 	// init hero
 	this->initHero();
 
+	// add buttons
+	SpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("button.plist");
+	_buttons = SpriteBatchNode::create("button.pvr.ccz");
+	_buttons->getTexture()->setAliasTexParameters();
+	this->addChild(_buttons);
+
+	// init buttons
+	auto _attackSprite = Sprite::createWithSpriteFrameName("button_a_normal@2x.png");
+	auto _jumpSprite = Sprite::createWithSpriteFrameName("button_b_normal@2x.png");
+	_attackSprite->setPosition(winSize.width - _attackSprite->getContentSize().width/2, 
+		_attackSprite->getContentSize().height/2);
+	_jumpSprite->setPosition(winSize.width - _jumpSprite->getContentSize().width*4/3,
+		_jumpSprite->getContentSize().height*4/3);
+	this->addChild(_attackSprite, 1);
+	this->addChild(_jumpSprite, 1);
+
+	// add listeners
+	auto _attackListener = EventListenerTouchOneByOne::create();
+	_attackListener->onTouchBegan = [&](Touch *ptouch, Event *pevent) -> bool{
+		auto target = static_cast<Sprite*>(pevent->getCurrentTarget());
+		Point locationInNode = target->convertToNodeSpace(ptouch->getLocation());
+		Size s = target->getContentSize();
+		Rect rect = Rect(0, 0, s.width, s.height);
+		if (rect.containsPoint(locationInNode))
+		{
+			auto fram = SpriteFrameCache::getInstance()->getSpriteFrameByName("button_a_selected@2x.png");
+			target->setSpriteFrame(fram);
+			_hero->attack();
+			return true;
+		}			
+		return false;
+	};
+	_attackListener->onTouchEnded = [&](Touch *ptouch, Event *pevent){
+		auto target = static_cast<Sprite*>(pevent->getCurrentTarget());
+		auto fram = SpriteFrameCache::getInstance()->getSpriteFrameByName("button_a_normal@2x.png");
+		target->setSpriteFrame(fram);
+		//_hero->idle();
+	};
+	auto _jumpListener = EventListenerTouchOneByOne::create();
+	_jumpListener->onTouchBegan = [&](Touch *ptouch, Event *pevent) -> bool{
+		auto target = static_cast<Sprite*>(pevent->getCurrentTarget());
+		Point locationInNode = target->convertToNodeSpace(ptouch->getLocation());
+		Size s = target->getContentSize();
+		Rect rect = Rect(0, 0, s.width, s.height);
+		if (rect.containsPoint(locationInNode))
+		{
+			auto fram = SpriteFrameCache::getInstance()->getSpriteFrameByName("button_b_selected@2x.png");
+			target->setSpriteFrame(fram);
+			_hero->jump();
+			return true;
+		}
+		return false;
+	};
+	_jumpListener->onTouchEnded = [&](Touch *ptouch, Event *pevent){
+		auto target = static_cast<Sprite*>(pevent->getCurrentTarget());
+		auto fram = SpriteFrameCache::getInstance()->getSpriteFrameByName("button_b_normal@2x.png");
+		target->setSpriteFrame(fram);
+		//_hero->idle();
+	};
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(_attackListener, _attackSprite);
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(_jumpListener, _jumpSprite);
+
+
+	// update
 	this->scheduleUpdate();
 
-	return ret;
+	return bRet;
 }
 
 void GameLayer::initHero()
@@ -52,7 +122,10 @@ void GameLayer::initHero()
 void GameLayer::update(float dt)
 {
 	_hero->update(dt);
-	this->updatePositions();
+	if (_hero->getActionState() == kActionStateWalk
+		|| _hero->getActionState() == kActionStateRun
+		|| _hero->getActionState() == kActionStateIdle)
+		this->updatePositions();
 }
 
 void GameLayer::updatePositions()
@@ -71,12 +144,20 @@ void GameLayer::didChangeDirectionTo(SimpleDPad *simpleDPad, Vec2 direction)
 
 void GameLayer::isHoldingDirection(SimpleDPad *simpleDPad, Vec2 direction)
 {
-	_hero->walkWithDirection(direction);
+	if (_hero->getActionState() == kActionStateWalk)
+		_hero->walkWithDirection(direction);
+	if (_hero->getActionState() == kActionStateRun)
+		_hero->runWithDirection(direction);
+}
+
+void GameLayer::didChangeDirectionToWithRun(SimpleDPad *simpleDPad, Vec2 direction)
+{
+	_hero->runWithDirection(direction);
 }
 
 void GameLayer::simpleDPadTouchEnded(SimpleDPad *simpleDPad)
 {
-	if (_hero->getActionState() == kActionStateWalk)
+	if (_hero->getActionState() == kActionStateWalk || _hero->getActionState() == kActionStateRun)
 	{
 		_hero->idle();
 	}
