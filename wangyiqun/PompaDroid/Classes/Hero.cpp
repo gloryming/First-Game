@@ -22,6 +22,8 @@ bool Hero::init()
 		this->setHurtAction(Sequence::create(Animate::create(HurtAnim), Character::createIdleCallbackFunc(), NULL));
 		Animation *DeadAnim = this->createAnimation("hero_knockout_%02d.png", 5, 12);
 		this->setDeadAction(Sequence::create(Animate::create(DeadAnim), Blink::create(3, 9), NULL));
+		Animation *JumpAnim = this->createAnimation("hero_jump_%02d.png", 6, 12);
+		this->setJumpAction(Sequence::create(Animate::create(JumpAnim),Character::createIdleCallbackFunc(),NULL));
 		ret = true;
 	} while (0);
 	return ret;

@@ -3,6 +3,9 @@
 
 #include "cocos2d.h"
 #include "Hero.h"
+#include "Robot.h"
+
+#define ROBOT_NUM 5
 
 class BackLayer: public cocos2d::Layer
 {
@@ -27,8 +30,14 @@ public:
 	void onHeroWalk(cocos2d::Point direction, float distance);
 	void onHeroAttack();
 	void onHeroStop();
+	void onHeroJump();
+	void onRobotAttack(Character* sp);
+
 	void update(float dt);
 	void updateHero(float dt);
+	void updateRobots(float dt);
+	void addRobot();
+
 
 	float m_tileWidth;
 	float m_tileHeight;
@@ -37,6 +46,8 @@ public:
 	float m_screenHeight;
 	cocos2d::Point m_origin;
 	cocos2d::SpriteBatchNode *m_spriteNodes;
+	cocos2d::SpriteBatchNode *m_spriteNodesR;
+	cocos2d::Vector<Robot*> m_robots;
 };
 
 #endif // __PLAY_SCENE_H__
