@@ -1,27 +1,30 @@
 #include "GameScene.h"
-USING_NS_CC;
+#include "GameLayer.h"
 
-	GameScene::GameScene(void){
-	
-};
+using namespace cocos2d;
 
+GameScene::GameScene()
+{
+}
 
-	GameScene::~GameScene(void){
+GameScene::~GameScene()
+{
+}
 
-	}
+bool GameScene::init()
+{
+    bool ret = false;
 
+    do {
+        CC_BREAK_IF(!Scene::init());
 
-	bool GameScene::init(){
-		bool bRet = false;
-		do 
-		{
-			CC_BREAK_IF(!CCScene::init());
-
-			_gameLayer = GameLayer::create();
-			this->addChild(_gameLayer, 0);
-
-			bRet = true;
-		} while (0);
-
-		return bRet;
-	}
+        _gameLayer = GameLayer::create();
+		this->addChild(_gameLayer, 0);
+        _optionLayer = OptionLayer::create();
+        this->addChild(_optionLayer, 1);
+		_optionLayer->getDPad()->setDelegate(_gameLayer);      
+        
+        ret = true;
+    } while (0);
+    return ret;
+}
