@@ -8,6 +8,7 @@ m_WalkAction(NULL),
 m_AttackAction(NULL),
 m_HurtAction(NULL),
 m_DeadAction(NULL),
+m_JumpAction(NULL),
 m_curActionState(ACTION_NONE)
 {
 
@@ -19,6 +20,7 @@ Character::~Character(){
 	CC_SAFE_RELEASE_NULL(m_AttackAction);
 	CC_SAFE_RELEASE_NULL(m_HurtAction);
 	CC_SAFE_RELEASE_NULL(m_DeadAction);
+	CC_SAFE_RELEASE_NULL(m_JumpAction);
 }
 
 bool Character::changeState(ActionState actionState){
@@ -53,6 +55,19 @@ void Character::runHurtAction(){
 void Character::runDeadAction(){
 	if (changeState(ACTION_DEAD)){
 		this->runAction(m_DeadAction);
+	}
+}
+
+void Character::runJumpAction(){
+	if (changeState(ACTION_JUMP)){
+		if (this->isFlippedX()){
+			this->setVelocity(Point(-5,0));
+		}
+		else{
+			this->setVelocity(Point(5,0));
+		}
+		this->runAction(JumpBy::create(0.5, Point(0,0), 80, 1));
+		this->runAction(m_JumpAction);
 	}
 }
 //

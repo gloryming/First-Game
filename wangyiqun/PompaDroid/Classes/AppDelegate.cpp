@@ -24,7 +24,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	//
 	//auto Size = director->getWinSize();
 
-	glview->setFrameSize(820,540);
+	glview->setFrameSize(480,320);
 	glview->setDesignResolutionSize(480.0f, 320.0f, ResolutionPolicy::FIXED_HEIGHT);
 	std::vector<std::string> searchPath;
 	searchPath.push_back("Resources");
